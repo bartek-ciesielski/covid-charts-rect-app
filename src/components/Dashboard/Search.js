@@ -12,9 +12,6 @@ const countryName = countries.map(el => {
     return el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`
 }).sort();
 
-console.log('SEEEEEEEEERCH', dataCSV.data)
-console.log('SEEEEEEEEERCH name', countryName)
-
 const useStyles = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
@@ -27,21 +24,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleSelect(props) {
     const classes = useStyles();
-    const [country1, setCountry1] = React.useState('');
-    const [country2, setCountry2] = React.useState('');
-    // const country1 = "props.country1";
-    // const country2 = "ddddd";
-
-    // const handleChange1 = event => {
-    //     props.setCountry1(event.target.value);
-    // };
-
     const handleChange1 = (event) => props.handleChangeParent(event.target.value)
     const handleChange2 = (event) => props.handleChangeParent2(event.target.value)
-
-    // const handleChange2 = event => {
-    //    props.setCountry2(event.target.value);
-    // };
 
     return (
         <div>
@@ -50,11 +34,11 @@ export default function SimpleSelect(props) {
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    value={country1}
+                    value={props.country1}
                     onChange={handleChange1}
                     label="country1"
                 >
-                    <MenuItem value="">
+                    <MenuItem value="Poland">
                         <em>None</em>
                     </MenuItem>
                     {countryName.map((name, index) => (
@@ -69,11 +53,11 @@ export default function SimpleSelect(props) {
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
-                    value={country2}
+                    value={props.country2}
                     onChange={handleChange2}
                     label="country2"
                 >
-                    <MenuItem value="">
+                    <MenuItem value="Poland">
                         <em>None</em>
                     </MenuItem>
                     {countryName.map((name, index) => (

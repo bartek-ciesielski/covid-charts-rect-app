@@ -73,7 +73,7 @@ export default function Chart() {
             dataParsed[Counter2][`country2`] = el;
             Counter2++
         }
-        if (dataParsed.length <= Counter2 && dataParsed.length < maxTime && index > 3 && parseInt(el) > chartStartSickNumber) {
+        if (dataParsed.length < Counter2 && dataParsed.length < maxTime && index > 3 && parseInt(el) > chartStartSickNumber) {
                 dataParsed.push(
                 {
                     day: Counter2,
@@ -148,12 +148,16 @@ export default function Chart() {
                         </Label>
                     </YAxis>
 
-                    <Line type="monotone" dataKey="country1" stroke={theme.palette.primary.main} dot={false} />
-                    <Line type="monotone" dataKey="country2" stroke={theme.palette.secondary.main} dot={false} />
+                    <Line type="monotone" dataKey="country1" stroke={theme.palette.secondary.main} dot={false} />
+                    <Line type="monotone" dataKey="country2" stroke={theme.palette.primary.main} dot={false} />
 
                 </LineChart>
             </ResponsiveContainer>
-            <Search handleChangeParent={handleChange1} handleChangeParent2={handleChange2} />
+            <Search
+            country1 = {country1chosen}
+            country2 = {country2chosen}
+            handleChangeParent={handleChange1}
+            handleChangeParent2={handleChange2} />
         </React.Fragment>
     );
 }
