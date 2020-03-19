@@ -22,7 +22,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
-import Combobox from './Search'
+import Search from './Search'
 
 function Copyright() {
   return (

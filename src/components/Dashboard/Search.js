@@ -25,18 +25,23 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect(props) {
     const classes = useStyles();
     const [country1, setCountry1] = React.useState('');
     const [country2, setCountry2] = React.useState('');
+    // const country1 = "props.country1";
+    // const country2 = "ddddd";
 
-    const handleChange1 = event => {
-        setCountry1(event.target.value);
-    };
+    // const handleChange1 = event => {
+    //     props.setCountry1(event.target.value);
+    // };
 
-    const handleChange2 = event => {
-        setCountry2(event.target.value);
-    };
+    const handleChange1 = (event) => props.handleChangeParent(event.target.value)
+    const handleChange2 = (event) => props.handleChangeParent2(event.target.value)
+
+    // const handleChange2 = event => {
+    //    props.setCountry2(event.target.value);
+    // };
 
     return (
         <div>
