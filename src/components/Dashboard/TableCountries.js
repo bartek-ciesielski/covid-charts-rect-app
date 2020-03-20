@@ -10,27 +10,24 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import dataCSV from './data';
+import dataCSVdaily from './dataTableDaily';
 
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
 
-
-console.log("DATA CSV RAW", dataCSV.data);
+console.log("DATA CSV RAW", dataCSVdaily.data);
 
 const columns = [
     { id: 'name', label: 'Name', minWidth: 170 },
     { id: 'sickCount', label: 'Liczba chorych', minWidth: 100 },
     {
         id: 'deathCount',
-        label: 'zagony',
+        label: 'Zgony',
         minWidth: 170,
         align: 'right',
         format: value => value.toLocaleString(),
     },
     {
-        id: 'healCount',
+        id: 'recoveredCount',
         label: 'wyzdroweinia',
         minWidth: 170,
         align: 'right',
@@ -39,19 +36,26 @@ const columns = [
 
 ];
 
-function createData(name, sickCount, deathCount, healCount) {
-    return { name, sickCount, deathCount, healCount };
+function createData(name, sickCount, deathCount, recoveredCount) {
+    return { name, sickCount, deathCount, recoveredCount };
 }
 
 
-const rowsUnsorted = dataCSV.data.map(el => {
+// const rowsUnsorted = dataCSV.data.map(el => {
+//     return createData(el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
+//         Object.values(el)[Object.values(el).length - 1],
+//         10,
+//         10)
+// });
+
+const rowsUnsorted = dataCSVdaily.data.map(el => {
     return createData(el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
-        Object.values(el)[Object.values(el).length - 1],
-        10,
-        10)
+        el.Confirmed,
+        el.Deaths,
+        el.Recovered)
 });
 
-const rows = rowsUnsorted.sort(function (a, b) {
+const sortByName = () => rowsUnsorted.sort(function (a, b) {
     var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
     if (nameA < nameB) //sort string ascending
         return -1
@@ -60,8 +64,20 @@ const rows = rowsUnsorted.sort(function (a, b) {
     return 0 //default return value (no sorting)
 })
 
-// const rows = rowsUnsorted.sort(function(a,b){return b.sickCount-a.sickCount});
-//descending
+
+let rows = [];
+const rowsSortedbyNameAsc = () => rows = sortByName()
+const rowsSortedbyNameDesc = () => rows = sortByName().reverse()
+const rowsSortedbySickDesc = () => rows = rowsUnsorted.sort(function (a, b) { return b.sickCount - a.sickCount });
+const rowsSortedbySickAsc = () => rows = rowsUnsorted.sort(function (a, b) { return b.sickCount - a.sickCount }).reverse();
+const rowsSortedbyDeathDesc = () => rows = rowsUnsorted.sort(function (a, b) { return b.deathCount - a.deathCount });
+const rowsSortedbyDeathAsc = () => rows = rowsUnsorted.sort(function (a, b) { return b.deathCount - a.deathCount }).reverse();
+const rowsSortedbyRecoveredDesc = () => rows = rowsUnsorted.sort(function (a, b) { return b.recoveredCount - a.recoveredCount });
+const rowsSortedbyRecoveredAsc = () => rows = rowsUnsorted.sort(function (a, b) { return b.recoveredCount - a.recoveredCount }).reverse();
+
+rowsSortedbyNameAsc()
+
+
 
 console.log("ROOOWS", rows)
 
@@ -85,7 +101,10 @@ export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [searchValue, setSearchValue] = React.useState('');
-    const [sortMetod, setSearchAscend] = React.useState('');
+    const [sortName, setSortName] = React.useState(true);
+    const [sortSick, setSortSick] = React.useState(false);
+    const [sortDeath, setSortDeath] = React.useState(false);
+    const [sortRecovered, setSortRecovered] = React.useState(false);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -95,6 +114,33 @@ export default function StickyHeadTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+    const handleSort = property => event => {
+        if (property === 'name') {
+            sortName === true ? rowsSortedbyNameAsc() : rowsSortedbyNameDesc()
+            setSortName(!sortName)
+        }
+        if (property === 'sickCount') {
+            sortSick === true ? rowsSortedbySickDesc() : rowsSortedbySickAsc()
+            setSortSick(!sortSick)
+        }
+        if (property === 'deathCount') {
+            sortDeath === true ? rowsSortedbyDeathDesc() : rowsSortedbyDeathAsc()
+            setSortDeath(!sortDeath)
+        }
+        if (property === 'recoveredCount') {
+            sortRecovered === true ? rowsSortedbyRecoveredDesc() : rowsSortedbyRecoveredAsc()
+            setSortRecovered(!sortRecovered)
+        }
+    }
+
+    // const handleSort = property => (event) => {
+
+    //         console.log(property)
+    //         setSortName(!sortName)
+    //         sortName === true ? rowsSortedbyNameAsc() : rowsSortedbyNameDesc()
+
+    // }
 
     const handleChangeSearch = (event) => setSearchValue(event.target.value)
 
@@ -130,6 +176,7 @@ export default function StickyHeadTable() {
                                     key={column.id}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
+                                    onClick={handleSort(column.id)}
                                 >
                                     {column.label}
                                 </TableCell>
