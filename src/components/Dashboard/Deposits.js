@@ -15,20 +15,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Deposits(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Polska - Total</Title>
+      <Title>Liczby</Title>
 
       <Typography component="p" variant="h4" className={classes.depositContext}>
-        156
+       DANE
       </Typography>
-      <Typography color="primary" >
-        <p color="primary">Polska</p>
+      <Typography color="secondary" >
+        <p color="primary"> { props.country1 } - { props.sickCount } </p>
       </Typography>
-      <Typography color="secondary" className={classes.depositContext}>
-      <p color="secondary">Włochy</p>
+      <Typography color="primary" className={classes.depositContext}>
+      <p color="secondary">{ props.country2 } - { props.sickCount2 }</p>
     </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>

@@ -21,8 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
-import Search from './Search'
+import CounriesTable from './TableCountries'
 
 function Copyright() {
   return (
@@ -129,6 +128,27 @@ export default function Dashboard() {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
+  const [country1chosen, setCountry1] = React.useState('');
+  const [country2chosen, setCountry2] = React.useState('');
+  const [count, setCount] = React.useState('');
+  const [count2, setCount2] = React.useState('');
+
+  const handleChangeCountryName1 = (el, el2) => {
+      setCountry1(el);
+      setCount(el2);
+  };
+
+  const handleChangeCountryName2 = (el, el2) => {
+    setCountry2(el);
+    setCount2(el2);
+  };
+
+  // const handleChangeCountryName2 = arr => {
+  //   return setCountry2(arr);
+  // };
+
+  console.log(country1chosen, count,  "DASHBOARD COUTRY 3");
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -144,7 +164,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {country1chosen} - {count}
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -154,7 +174,7 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
 
-      <Drawer
+      {/*<Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -170,7 +190,7 @@ export default function Dashboard() {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
-      </Drawer>
+      </Drawer>*/}
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -179,19 +199,26 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Chart
+                handleDashboardCountryName1={handleChangeCountryName1}
+                handleDashboardCountryName2={handleChangeCountryName2}
+                />
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Deposits
+                country1 = {country1chosen}
+                sickCount = {count}
+                country2 = {country2chosen}
+                sickCount2 = {count2}/>
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+            {/* TableCountry */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <CounriesTable />
               </Paper>
             </Grid>
           </Grid>

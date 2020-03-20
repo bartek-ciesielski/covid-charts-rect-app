@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import dataCSV from '../Dashboard/data'
+import dataCSV from './data'
 
 const countries = dataCSV.data;
 const countryName = countries.map(el => {
@@ -38,7 +38,7 @@ export default function SimpleSelect(props) {
                     onChange={handleChange1}
                     label="country1"
                 >
-                    <MenuItem value="Poland">
+                    <MenuItem value="Italy">
                         <em>None</em>
                     </MenuItem>
                     {countryName.map((name, index) => (

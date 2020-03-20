@@ -7,15 +7,27 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
+import TextField from '@material-ui/core/TextField';
+import dataCSV from '../Dashboard/data'
+
+console.log(dataCSV.data, "RAW DATACSV")
+
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount, population) {
-  return { id, date, name, shipTo, paymentMethod, amount, population };
+function createData(id, name, sickCount, deathCount, healCount) {
+  return { id, name, sickCount, deathCount, healCount };
 }
 
 const rows = [
-  createData(0, 'Polska', 156, 3, 0, 205, 400000),
-  createData(1, 'Włochy', 24747, 2158, "?", 24747, 600000),
+  createData(0, 'Polska', 156, 3, 0, 205),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
+  createData(1, 'Włochy', 24747, 2158, "?"),
 ];
 
 function preventDefault(event) {
@@ -33,26 +45,27 @@ export default function Orders() {
   return (
     <React.Fragment>
       <Title>{Date()}</Title>
+
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField id="outlined-search" label="Search country" type="search" variant="outlined" />
+      </form>
+
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Kraj</TableCell>
-            <TableCell>Zachorowania</TableCell>
-            <TableCell>Zgony</TableCell>
-            <TableCell>Wyzdrowienia</TableCell>
-            <TableCell align="right">Przyrost</TableCell>
-            <TableCell align="right">Procent Populacji</TableCell>
+            <TableCell align="center">Zachorowania</TableCell>
+            <TableCell align="center">Zgony</TableCell>
+            <TableCell align="center">Wyzdrowienia</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-              <TableCell align="right">{row.amount/row.population}</TableCell>
+              <TableCell >{row.name}</TableCell>
+              <TableCell align="right">{row.sickCount}</TableCell>
+              <TableCell align="right">{row.deathCount}</TableCell>
+              <TableCell align="right">{row.healCount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -65,4 +78,9 @@ export default function Orders() {
     </React.Fragment>
   );
 }
+
+
+
+
+
 

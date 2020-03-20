@@ -2,34 +2,63 @@ import React, { onError, onComplete } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import Title from './Title';
-import { readRemoteFile, readString, Papa } from 'react-papaparse'
 import dataCSV from '../Dashboard/data'
-import Search from './Search'
-
-console.log(dataCSV)
+import Select from './Select'
 
 
 
+export default function Chart(props) {
 
-export default function Chart() {
     const theme = useTheme();
-    const [country1chosen, setCountry1] = React.useState('Poland');
+    const [country1chosen, setCountry1] = React.useState('Italy');
     const [country2chosen, setCountry2] = React.useState('Poland');
-
 
     const countries = dataCSV.data
 
 
-    const country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}`);
-    const country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`);
+    // return el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`
 
-    console.log(country1, "COUNTRY 1")
+    // const chosenCountry1Arr = country1chosen.split(" ")
+
+    // const country1 = countries.map(el => el['Province/State'] !== '' ? country1chosen.split(" ")[2] : `${country1chosen}`);
+
+    // const country2 = countries.map(el => el['Province/State'] !== '' ? country2chosen.split(" ")[2] : `${country2chosen}`);
+
+
+
+    // let country11 = []
+    console.log(country1chosen.split(' ').length, "DLIGOSC");
+
+    let country1 = []
+    if(country1chosen.split(' - ').length > 1){
+        country1 = countries.filter(el => el['Province/State'] === country1chosen.split(' - ')[1] && el['Country/Region'] === country1chosen.split(' - ')[0]);
+    }
+    else {country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}`);}
+
+
+    let country2 = []
+    if(country2chosen.split(' - ').length > 1){
+        country2 = countries.filter(el => el['Province/State'] === country2chosen.split(' - ')[1] && el['Country/Region'] === country2chosen.split(' - ')[0]);
+    }
+    else {country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`);}
+
+    // let country21 = country2chosen.split(' ').length > 0 ?
+    // countries.filter(el => el['Province/State'] === `${country2chosen.split(' ')[2]}`) :
+    // countries.filter(el => el['Country/Region'] === `${country2chosen}`);
+
+ console.log("COUNTRY @@@@@", country1chosen.split(' - ')[1], "MMMMMMMMMMMYSLNIK")
+    // const country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`);
+
+// const country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}`);
+    // const country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`);
+
     const sickNumberArray1 = Object.values(country1[0]).splice(4)
     const sickNumberArray2 = Object.values(country2[0]).splice(4);
     const actualSickAmount1 = sickNumberArray1[sickNumberArray1.length - 1];
     const actualSickAmount2 = sickNumberArray2[sickNumberArray1.length - 1];
 
-
+    console.log(country1, "COUNTRY 1")
+    console.log(country2, "COUNTRY 2", sickNumberArray2, "ARRAY")
 
     console.log(sickNumberArray1, "fffffffff")
     console.log(actualSickAmount1, "fffffffffFFFFFFF")
@@ -69,11 +98,11 @@ export default function Chart() {
     });
 
     if (country2chosen !== '') sickNumberArray2.forEach((el, index) => {
-        if (parseInt(el) >= chartStartSickNumber && index > 3 && dataParsed.length > Counter2) {
+        if (parseInt(el) >= chartStartSickNumber && index && dataParsed.length > Counter2) {
             dataParsed[Counter2][`country2`] = el;
             Counter2++
         }
-        if (dataParsed.length < Counter2 && dataParsed.length < maxTime && index > 3 && parseInt(el) > chartStartSickNumber) {
+        if (dataParsed.length <= Counter2 && dataParsed.length < maxTime && index > 3 && parseInt(el) > chartStartSickNumber) {
                 dataParsed.push(
                 {
                     day: Counter2,
@@ -106,19 +135,23 @@ export default function Chart() {
     // country1 && !country2 ? maxYvalue = dataParsed[dataParsed.length-1].country1 : maxYvalue = 1000;
     // !country1 && country2 ? maxYvalue = dataParsed[dataParsed.length-1].country2 : maxYvalue = 1000;
 
-
-
-
-
     const handleChange1 = event => {
         dataParsed = []
-        return setCountry1(event);
+        setCountry1(event)
+
+        // props.handleDashboardCountryName1(event)
     };
+
 
     const handleChange2 = event => {
         dataParsed = []
+        // props.handleDashboardCountryName2(event)
         return setCountry2(event);
     };
+
+
+    props.handleDashboardCountryName1(country1chosen, actualSickAmount1)
+    props.handleDashboardCountryName2(country2chosen, actualSickAmount2)
 
     console.log(country1, "COUNTRY 1", dataParsed)
     return (
@@ -150,10 +183,9 @@ export default function Chart() {
 
                     <Line type="monotone" dataKey="country1" stroke={theme.palette.secondary.main} dot={false} />
                     <Line type="monotone" dataKey="country2" stroke={theme.palette.primary.main} dot={false} />
-
                 </LineChart>
             </ResponsiveContainer>
-            <Search
+            <Select
             country1 = {country1chosen}
             country2 = {country2chosen}
             handleChangeParent={handleChange1}
