@@ -7,9 +7,11 @@ import Select from './Select'
 
 
 
+
 export default function Chart(props) {
 
     const theme = useTheme();
+
     const [country1chosen, setCountry1] = React.useState('Italy');
     const [country2chosen, setCountry2] = React.useState('Poland');
 
@@ -156,7 +158,7 @@ export default function Chart(props) {
     console.log(country1, "COUNTRY 1", dataParsed)
     return (
         <React.Fragment>
-            <Title>{'Zestawienie od momentu wykrycia 20 przypadków'}</Title>
+            <Title>{'Zestawienie od momentu wykrycia 1 przypadku'}</Title>
             <ResponsiveContainer>
                 <LineChart
                     width={500}

@@ -12,7 +12,9 @@ import TableRow from '@material-ui/core/TableRow';
 import dataCSV from './data';
 
 
-
+import { createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
 
 
 console.log("DATA CSV RAW", dataCSV.data);
@@ -62,36 +64,6 @@ const rows = rowsUnsorted.sort(function (a, b) {
 //descending
 
 console.log("ROOOWS", rows)
-// const rows1 = [
-//   createData('India', 'IN', 1324171354, 3287263),
-//   createData('China', 'CN', 1403500365, 9596961),
-//   createData('Italy', 'IT', 60483973, 301340),
-//   createData('United States', 'US', 327167434, 9833520),
-//   createData('Canada', 'CA', 37602103, 9984670),
-//   createData('Australia', 'AU', 25475400, 7692024),
-//   createData('Germany', 'DE', 83019200, 357578),
-//   createData('Ireland', 'IE', 4857000, 70273),
-//   createData('Mexico', 'MX', 126577691, 1972550),
-//   createData('Japan', 'JP', 126317000, 377973),
-//   createData('France', 'FR', 67022000, 640679),
-//   createData('United Kingdom', 'GB', 67545757, 242495),
-//   createData('Russia', 'RU', 146793744, 17098246),
-//   createData('Nigeria', 'NG', 200962417, 923768),
-//   createData('Brazil', 'BR', 210147125, 8515767),
-// ];
-
-// const useStyles = makeStyles({
-//     root: {
-//         width: '100%',
-//         '& .MuiTextField-root': {
-//             margin: theme.spacing(1),
-//             width: '25ch',
-//         },
-//     },
-//     container: {
-//         maxHeight: 440,
-//     },
-// });
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -113,6 +85,7 @@ export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [searchValue, setSearchValue] = React.useState('');
+    const [sortMetod, setSearchAscend] = React.useState('');
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -166,7 +139,7 @@ export default function StickyHeadTable() {
                     <TableBody>
                         {rowsSearched.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                <TableRow hover={true} role="checkbox" tabIndex={-1} key={row.code}>
                                     {columns.map(column => {
                                         const value = row[column.id];
                                         return (
