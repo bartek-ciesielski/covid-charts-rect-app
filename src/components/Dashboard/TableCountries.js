@@ -11,25 +11,28 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import dataCSV from './data';
 import dataCSVdaily from './dataTableDaily';
+import ImportExportTwoToneIcon from '@material-ui/icons/ImportExportTwoTone';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
 
 
 
 console.log("DATA CSV RAW", dataCSVdaily.data);
 
 const columns = [
-    { id: 'name', label: 'Name', minWidth: 170 },
-    { id: 'sickCount', label: 'Liczba chorych', minWidth: 100 },
+    { id: 'name', label: 'Country', minWidth: 170 },
+    { id: 'sickCount', label: 'Confirmed Cases', minWidth: 100, align: 'right', },
     {
         id: 'deathCount',
-        label: 'Zgony',
-        minWidth: 170,
+        label: 'Deaths',
+        minWidth: 100,
         align: 'right',
         format: value => value.toLocaleString(),
     },
     {
         id: 'recoveredCount',
-        label: 'wyzdroweinia',
-        minWidth: 170,
+        label: 'Recovered',
+        minWidth: 100,
         align: 'right',
         format: value => value.toLocaleString(),
     },
@@ -41,15 +44,9 @@ function createData(name, sickCount, deathCount, recoveredCount) {
 }
 
 
-// const rowsUnsorted = dataCSV.data.map(el => {
-//     return createData(el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
-//         Object.values(el)[Object.values(el).length - 1],
-//         10,
-//         10)
-// });
-
 const rowsUnsorted = dataCSVdaily.data.map(el => {
-    return createData(el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
+    return createData(
+        el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
         el.Confirmed,
         el.Deaths,
         el.Recovered)
@@ -78,7 +75,6 @@ const rowsSortedbyRecoveredAsc = () => rows = rowsUnsorted.sort(function (a, b) 
 rowsSortedbyNameAsc()
 
 
-
 console.log("ROOOWS", rows)
 
 const useStyles = makeStyles(theme => ({
@@ -90,7 +86,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     container: {
-        // backgroundColor: "red",
+        // backgroundColor: theme.palette.grey[200],
         maxHeight: 440,
     },
 }));
@@ -158,6 +154,7 @@ export default function StickyHeadTable() {
 
 
     return (
+
         <Paper className={classes.root}>
             <TableContainer className={classes.container}>
                 <form className={classes.root} noValidate autoComplete="off">
@@ -169,7 +166,7 @@ export default function StickyHeadTable() {
                         onChange={handleChangeSearch} />
                 </form>
                 <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
+                    <TableHead >
                         <TableRow>
                             {columns.map(column => (
                                 <TableCell
@@ -178,7 +175,11 @@ export default function StickyHeadTable() {
                                     style={{ minWidth: column.minWidth }}
                                     onClick={handleSort(column.id)}
                                 >
-                                    {column.label}
+                                        <div style={column.id === 'name' ?
+                                        {display: 'flex', justifyContent: 'flex-start', alignItems: 'center'} :
+                                        {display: 'flex', justifyContent: 'flex-end', alignItems: 'center'} }>
+                                        {column.label}<ImportExportTwoToneIcon style={{marginLeft: '10px', fontSize: 'medium'}}/>
+                                    </div>
                                 </TableCell>
                             ))}
                         </TableRow>

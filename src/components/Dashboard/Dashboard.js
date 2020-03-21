@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles , useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
@@ -23,6 +23,19 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import CounriesTable from './TableCountries'
 
+
+
+
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import cyan from '@material-ui/core/colors/cyan';
+
+
+
+
+
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -37,6 +50,8 @@ function Copyright() {
 }
 
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -113,13 +128,53 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 440,
+    height: 640,
   },
 }));
 
 export default function Dashboard() {
+
+  /* lato-regular - latin */
+const lato = {
+  fontFamily: 'Lato',
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: `local('Lato Regular'), local('Lato-Regular'),
+        url('../fonts/lato-v16-latin-regular.eot'),
+       url('../fonts/lato-v16-latin-regular.eot?#iefix'),
+       url('../fonts/lato-v16-latin-regular.woff2'),
+       url('../fonts/lato-v16-latin-regular.woff'),
+       url('../fonts/lato-v16-latin-regular.ttf'),
+       url('../fonts/lato-v16-latin-regular.svg#Lato') format('svg'),`
+}
+
+  const theme = createMuiTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: cyan['200'],
+      },
+      secondary: {
+        main: '#ff9800',
+      },
+    },
+    typography: {
+      fontFamily: 'Lato',
+    },
+    overrides: {
+      MuiCssBaseline: {
+        '@global': {
+          '@font-face': [lato],
+        },
+      },
+    },
+  });
+
+  console.log(theme.typography, 'TYPPOGRPHY')
+
+  // const theme = useTheme();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -150,6 +205,7 @@ export default function Dashboard() {
   console.log(country1chosen, count,  "DASHBOARD COUTRY 3");
 
   return (
+    <ThemeProvider theme={theme}>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -164,8 +220,9 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            {Date()}
+            Coronavirus COVID-19 Charts - based on WHO and Johns Hopkins University (JHU) data.
           </Typography>
+
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
@@ -174,7 +231,7 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
 
-      {/*<Drawer
+      <Drawer
         variant="permanent"
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -190,7 +247,7 @@ export default function Dashboard() {
         <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
-      </Drawer>*/}
+      </Drawer>
 
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -198,7 +255,10 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
+              <Paper
+              className={fixedHeightPaper}
+              style={{ alignItems: "center" } }
+               >
                 <Chart
                 handleDashboardCountryName1={handleChangeCountryName1}
                 handleDashboardCountryName2={handleChangeCountryName2}
@@ -228,5 +288,6 @@ export default function Dashboard() {
         </Container>
       </main>
     </div>
+    </ThemeProvider>
   );
 }

@@ -30,7 +30,7 @@ export default function SimpleSelect(props) {
     return (
         <div>
             <FormControl variant="outlined" color='secondary' className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Kraj 1</InputLabel>
+                <InputLabel id="demo-simple-select-outlined-label">Country 1</InputLabel>
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
@@ -49,7 +49,7 @@ export default function SimpleSelect(props) {
                 </Select>
             </FormControl>
             <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Kraj 2</InputLabel>
+                <InputLabel id="demo-simple-select-outlined-label">Country 2</InputLabel>
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
