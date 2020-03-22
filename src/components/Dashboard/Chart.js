@@ -1,4 +1,4 @@
-import React, { onError, onComplete } from 'react';
+import React, { onError, onComplete, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Legend, Tooltip } from 'recharts';
 import Title from './Title';
@@ -142,12 +142,22 @@ export default function Chart(props) {
         return setScaleYmax(event);
     };
 
-    props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
-    props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+
+
+    // props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+    // props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
 
     //*************************************/
     // w tym miejcu wywala blad, ale dziala
     //*************************************/
+
+
+    //   handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+    //     handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+useEffect(() => {
+    props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+    props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+  });
 
     console.log(country1, "COUNTRY 1", dataParsed)
 
