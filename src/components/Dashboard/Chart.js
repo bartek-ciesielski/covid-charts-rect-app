@@ -93,7 +93,7 @@ export default function Chart(props) {
 
 
     const CustomTooltip = ({ active, payload, label }) => {
-        if (active) {
+        if (active && payload) {
             console.log(payload, "PAYLOAD", label, "label")
             return (
                 <div className="custom-tooltip">
@@ -103,7 +103,6 @@ export default function Chart(props) {
                 </div>
             );
         }
-
         return null;
     };
 
@@ -135,7 +134,7 @@ export default function Chart(props) {
 
     console.log(country1, "COUNTRY 1", dataParsed)
 
-    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
     return (
         <React.Fragment>
             <Title>COVID-19 Comparison</Title>
@@ -163,7 +162,7 @@ export default function Chart(props) {
                             { `Cumulative - ${ chartFactor }` }
                         </Label>
                     </YAxis>
-                    <Tooltip content={<CustomTooltip />} />
+                    { dataParsed.length > 0 ? <Tooltip content={<CustomTooltip />} /> : null }
                     <Area type="monotone" dataKey={`${country1chosen}`} stroke={theme.palette.secondary.light} strokeWidth={2} fill={theme.palette.secondary.main} dot={false} />
                     <Area type="monotone" dataKey={`${country2chosen}`} stroke={theme.palette.primary.light} strokeWidth={2} fill={theme.palette.primary.main} dot={false} />
                 </AreaChart>
