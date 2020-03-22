@@ -148,7 +148,7 @@ export default function SimpleSelect(props) {
             <FormControl variant="outlined" className={classes.formControl} style = {{ paddingLeft: 20 }}>
             <div>
                 <Typography variant='caption'>
-                    Y max
+                    Y scale
                 </Typography>
                 <Slider
                     defaultValue={1}

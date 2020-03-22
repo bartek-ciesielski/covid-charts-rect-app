@@ -22,9 +22,9 @@ export default function Chart(props) {
 
     let countries = dataCSV.data
 
-    if(chartFactor === 'Confirmed') { countries = dataCSV.data };
-    if(chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
-    if(chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
+    if (chartFactor === 'Confirmed') { countries = dataCSV.data };
+    if (chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
+    if (chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
 
 
 
@@ -155,35 +155,41 @@ export default function Chart(props) {
     return (
         <React.Fragment>
             <Title>COVID-19 Comparison</Title>
-            <p variant="subtitle2">{ new Date().toLocaleDateString() }</p>
+            <p variant="subtitle2">{new Date().toLocaleDateString()}</p>
             <ResponsiveContainer>
                 <AreaChart
                     width={500}
                     height={400}
                     data={dataParsed}
                     margin={{
-                        top: 16,
+                        top: 0,
                         right: 16,
                         bottom: 0,
                         left: 24,
                     }}
                 >
-                    <CartesianGrid stroke="#ccc" strokeDasharray="0 0" strokeOpacity={0.2} strokeWidth={1} fillOpacity={0.5} verticalFill={['#555555']}/>
-                    <XAxis type="number" dataKey="day" stroke={theme.palette.text.primary} tickCount={10} domain={[0, (maxXvalue - 1)]} allowDecimals={false}/>
+                    <CartesianGrid
+                        stroke="#ccc"
+                        strokeDasharray="0 0"
+                        strokeOpacity={0.2}
+                        strokeWidth={1} fillOpacity={0.5}
+                        verticalFill={['#555555']}
+                    />
+                    <XAxis type="number" dataKey="day" stroke={theme.palette.text.primary} tickCount={10} domain={[0, (maxXvalue - 1)]} allowDecimals={false} />
                     <YAxis type="number"
-                    stroke={theme.palette.text.secondary}
-                    tickCount={10}
-                    domain={[minYvalue, dataMax => ((maxYvalue/scaleYmax).toFixed())]}
+                        stroke={theme.palette.text.secondary}
+                        tickCount={10}
+                        domain={[minYvalue, dataMax => ((maxYvalue / scaleYmax).toFixed())]}
                     >
                         <Label
                             angle={270}
                             position="left"
                             style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
                         >
-                            { `Cumulative - ${ chartFactor }` }
+                            {`Cumulative - ${chartFactor}`}
                         </Label>
                     </YAxis>
-                    { dataParsed.length > 0 ? <Tooltip content={<CustomTooltip />} /> : null }
+                    {dataParsed.length > 0 ? <Tooltip content={<CustomTooltip />} /> : null}
                     <Area type="monotone" dataKey={`${country1chosen}`} stroke={theme.palette.secondary.light} strokeWidth={2} fill={theme.palette.secondary.main} dot={false} />
                     <Area type="monotone" dataKey={`${country2chosen}`} stroke={theme.palette.primary.light} strokeWidth={2} fill={theme.palette.primary.main} dot={false} />
                 </AreaChart>
