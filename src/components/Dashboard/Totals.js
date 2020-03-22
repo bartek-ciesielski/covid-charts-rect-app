@@ -34,7 +34,7 @@ export default function Deposits(props) {
         <p>TOTAL</p>
 
         <Typography color="secondary" variant="h5" >
-          <p style={{ fontSize: 18, display: 'flex', alignItems: 'center', marginTop: 70 }}>
+          <p style={{ fontSize: 18, display: 'flex', alignItems: 'center', marginTop: 60 }}>
             <PeopleAltTwoToneIcon style={{ fontSize: 60, marginRight: 30 }} />{props.country1 }
           </p>
         </Typography>

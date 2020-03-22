@@ -113,6 +113,14 @@ export default function Chart(props) {
     const handleChange1 = event => {
         dataParsed = []
         setCountry1(event)
+        // props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+        // props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+        //*************************************
+
+        // podaje stan porzedni, nie obecny
+
+        //*************************************/
+
     };
 
     const handleChange2 = event => {
@@ -136,6 +144,10 @@ export default function Chart(props) {
 
     props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
     props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+
+    //*************************************/
+    // w tym miejcu wywala blad, ale dziala
+    //*************************************/
 
     console.log(country1, "COUNTRY 1", dataParsed)
 
@@ -161,8 +173,8 @@ export default function Chart(props) {
                     <YAxis type="number"
                     stroke={theme.palette.text.secondary}
                     tickCount={10}
-                    domain={[minYvalue, (maxYvalue)/scaleYmax ]}
-                    allowDecimals={false}>
+                    domain={[minYvalue, dataMax => ((maxYvalue/scaleYmax).toFixed())]}
+                    >
                         <Label
                             angle={270}
                             position="left"

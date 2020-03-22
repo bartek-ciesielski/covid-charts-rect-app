@@ -41,8 +41,8 @@ const marksYmax = [
     },
 
     {
-        value: 5,
-        label: '20%',
+        value: 10,
+        label: '10%',
     },
 
 ];
@@ -156,7 +156,7 @@ export default function SimpleSelect(props) {
                     aria-labelledby="discrete-slider-always"
                     step={0.1}
                     min={1}
-                    max={5}
+                    max={10}
                     marks={marksYmax}
                     valueLabelDisplay="off"
                     onChange={handleChangeYmax}
