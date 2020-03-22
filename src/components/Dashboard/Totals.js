@@ -30,7 +30,7 @@ export default function Deposits(props) {
   return (
     <React.Fragment >
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <Title>CONFIRMED CASES</Title>
+        <Title>{props.factor}</Title>
         <p>TOTAL</p>
 
         <Typography color="secondary" variant="h5" >

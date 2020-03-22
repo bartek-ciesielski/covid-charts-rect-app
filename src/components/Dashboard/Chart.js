@@ -3,6 +3,8 @@ import { useTheme } from '@material-ui/core/styles';
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Legend, Tooltip } from 'recharts';
 import Title from './Title';
 import dataCSV from '../Dashboard/data'
+import dataCSVdeaths from '../Dashboard/dataDeaths'
+import dataCSVrecovered from '../Dashboard/dataRecovered'
 import Select from './Select'
 
 
@@ -14,7 +16,16 @@ export default function Chart(props) {
 
     const [country1chosen, setCountry1] = React.useState('Italy');
     const [country2chosen, setCountry2] = React.useState('Poland');
-    const countries = dataCSV.data
+    const [startNumber, setStartNumber] = React.useState(1);
+    const [chartFactor, setChartFactor] = React.useState('Confirmed');
+
+    let countries = dataCSV.data
+
+    if(chartFactor === 'Confirmed') { countries = dataCSV.data };
+    if(chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
+    if(chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
+
+
 
 
     let country1 = []
@@ -38,7 +49,8 @@ export default function Chart(props) {
 
     let dataParsed = [];
 
-    let chartStartSickNumber = 1;
+    // let chartStartSickNumber = 1;
+    let chartStartSickNumber = startNumber;
     let chartStartDayCounter = 0;
     let Counter2 = 0;
     const maxTime = Object.values(country1[0]).length;
@@ -80,22 +92,6 @@ export default function Chart(props) {
     const maxXvalue = dataParsed.length;
 
 
-    const getIntroOfPage = (label) => {
-        if (label === 'Page A') {
-            return "Page A is about men's clothing";
-        } if (label === 'Page B') {
-            return "Page B is about women's dress";
-        } if (label === 'Page C') {
-            return "Page C is about women's bag";
-        } if (label === 'Page D') {
-            return 'Page D is about household goods';
-        } if (label === 'Page E') {
-            return 'Page E is about food';
-        } if (label === 'Page F') {
-            return 'Page F is about baby food';
-        }
-    };
-
     const CustomTooltip = ({ active, payload, label }) => {
         if (active) {
             console.log(payload, "PAYLOAD", label, "label")
@@ -124,14 +120,26 @@ export default function Chart(props) {
         return setCountry2(event);
     };
 
-    props.handleDashboardCountryName1(country1chosen, actualSickAmount1)
-    props.handleDashboardCountryName2(country2chosen, actualSickAmount2)
+    const handleChangeChartFactor = event => {
+        dataParsed = []
+        return setChartFactor(event);
+    };
+
+    const handleChangeStartNumber = event => {
+        dataParsed = []
+        return setStartNumber(event);
+    };
+
+    props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+    props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
 
     console.log(country1, "COUNTRY 1", dataParsed)
+
+    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     return (
         <React.Fragment>
             <Title>COVID-19 Comparison</Title>
-            <p variant="subtitle2">from First Confirmed Case in each Country</p>
+            <p variant="subtitle2">{ new Date().toLocaleDateString() }</p>
             <ResponsiveContainer>
                 <AreaChart
                     width={500}
@@ -152,7 +160,7 @@ export default function Chart(props) {
                             position="left"
                             style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
                         >
-                            Cumulative Confirmed Cases
+                            { `Cumulative - ${ chartFactor }` }
                         </Label>
                     </YAxis>
                     <Tooltip content={<CustomTooltip />} />
@@ -161,10 +169,13 @@ export default function Chart(props) {
                 </AreaChart>
             </ResponsiveContainer>
             <Select
+                factor={chartFactor}
                 country1={country1chosen}
                 country2={country2chosen}
                 handleChangeParent={handleChange1}
-                handleChangeParent2={handleChange2} />
+                handleChangeParent2={handleChange2}
+                handleChangeChartFactorParent={handleChangeChartFactor}
+                handleChangeStartNumberParent={handleChangeStartNumber} />
         </React.Fragment>
     );
 }
