@@ -117,7 +117,7 @@ export default function Chart(props) {
         // props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
         //*************************************
 
-        // podaje stan porzedni, nie obecny
+        // podaje stan porzedni, nie obecny zmieniony
 
         //*************************************/
 
@@ -175,7 +175,22 @@ export default function Chart(props) {
                         strokeWidth={1} fillOpacity={0.5}
                         verticalFill={['#555555']}
                     />
-                    <XAxis type="number" dataKey="day" stroke={theme.palette.text.primary} tickCount={10} domain={[0, (maxXvalue - 1)]} allowDecimals={false} />
+                    <XAxis type="number"
+                        dataKey="day"
+                        stroke={theme.palette.text.primary}
+                        tickCount={10} domain={[0, (maxXvalue - 1)]}
+                        allowDecimals={false}
+                    >
+                        <Label
+                            position="insideBottomRight"
+                            offset={45}
+                            style={{
+                                fill: theme.palette.text.primary,
+                                textAnchor: 'middle' }}
+                        >
+                            DAYS
+                        </Label>
+                    </XAxis>
                     <YAxis type="number"
                         stroke={theme.palette.text.secondary}
                         tickCount={10}
