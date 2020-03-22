@@ -34,6 +34,19 @@ const marks = [
     },
 ];
 
+const marksYmax = [
+    {
+        value: 1,
+        label: '',
+    },
+
+    {
+        value: 5,
+        label: '20%',
+    },
+
+];
+
 function valuetext(value) {
     return `${value}`;
 }
@@ -54,6 +67,7 @@ export default function SimpleSelect(props) {
     const handleChange2 = (event) => props.handleChangeParent2(event.target.value)
     const handleChangeStart = (event, value) => { props.handleChangeStartNumberParent(value) }
     const handleChangeChartFactor = (event) => { props.handleChangeChartFactorParent(event.target.value) }
+    const handleChangeYmax = (event, value) => { props.handleChangeYmaxParent(value) }
 
     return (
         <div style={{
@@ -112,8 +126,9 @@ export default function SimpleSelect(props) {
                     ))}
                 </Select>
             </FormControl>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <div>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+            <FormControl variant="outlined" className={classes.formControl} style = {{paddingLeft: 20 }}>
+                <div >
                     <Typography variant='caption'>
                         Start Number
                     </Typography>
@@ -129,9 +144,26 @@ export default function SimpleSelect(props) {
                         onChange={handleChangeStart}
                     />
                 </div>
-
             </FormControl>
-
+            <FormControl variant="outlined" className={classes.formControl} style = {{ paddingLeft: 20 }}>
+            <div>
+                <Typography variant='caption'>
+                    Y max
+                </Typography>
+                <Slider
+                    defaultValue={1}
+                    getAriaValueText={valuetext}
+                    aria-labelledby="discrete-slider-always"
+                    step={0.1}
+                    min={1}
+                    max={5}
+                    marks={marksYmax}
+                    valueLabelDisplay="off"
+                    onChange={handleChangeYmax}
+              />
+            </div>
+        </FormControl>
+        </div>
         </div>
 
     );

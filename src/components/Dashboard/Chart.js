@@ -18,6 +18,7 @@ export default function Chart(props) {
     const [country2chosen, setCountry2] = React.useState('Poland');
     const [startNumber, setStartNumber] = React.useState(1);
     const [chartFactor, setChartFactor] = React.useState('Confirmed');
+    const [scaleYmax, setScaleYmax] = React.useState(1);
 
     let countries = dataCSV.data
 
@@ -129,6 +130,10 @@ export default function Chart(props) {
         return setStartNumber(event);
     };
 
+    const handleChangeScaleYmax = event => {
+        return setScaleYmax(event);
+    };
+
     props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
     props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
 
@@ -152,8 +157,12 @@ export default function Chart(props) {
                     }}
                 >
                     <CartesianGrid stroke="#ccc" strokeDasharray="0 0" strokeOpacity={0.2} strokeWidth={1} fillOpacity={0.5} verticalFill={['#555555']}/>
-                    <XAxis type="number" dataKey="day" stroke={theme.palette.text.primary} tickCount={10} domain={[0, maxXvalue - 1]} />
-                    <YAxis type="number" stroke={theme.palette.text.secondary} tickCount={10} domain={[minYvalue, maxYvalue]}>
+                    <XAxis type="number" dataKey="day" stroke={theme.palette.text.primary} tickCount={10} domain={[0, (maxXvalue - 1)]} allowDecimals={false}/>
+                    <YAxis type="number"
+                    stroke={theme.palette.text.secondary}
+                    tickCount={10}
+                    domain={[minYvalue, (maxYvalue)/scaleYmax ]}
+                    allowDecimals={false}>
                         <Label
                             angle={270}
                             position="left"
@@ -173,6 +182,7 @@ export default function Chart(props) {
                 country2={country2chosen}
                 handleChangeParent={handleChange1}
                 handleChangeParent2={handleChange2}
+                handleChangeYmaxParent={handleChangeScaleYmax}
                 handleChangeChartFactorParent={handleChangeChartFactor}
                 handleChangeStartNumberParent={handleChangeStartNumber} />
         </React.Fragment>
