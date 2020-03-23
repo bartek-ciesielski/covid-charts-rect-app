@@ -188,7 +188,7 @@ export default function Dashboard() {
   const handleChangeCountryName1 = (el, el2, el3) => {
     setCountry1(el);
     setCount(el2);
-    setChartFactor(el2);
+    setChartFactor(el3);
   };
 
   const handleChangeCountryName2 = (el, el2, el3) => {

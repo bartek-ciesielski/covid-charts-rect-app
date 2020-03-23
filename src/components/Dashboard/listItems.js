@@ -9,6 +9,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import Select from './Select'
 
 export const mainListItems = (
   <div>
@@ -16,6 +17,7 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
+      <Select/>
       <ListItemText primary="Comparison" />
     </ListItem>
     <ListItem button>

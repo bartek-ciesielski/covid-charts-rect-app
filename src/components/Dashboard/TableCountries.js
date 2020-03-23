@@ -146,7 +146,7 @@ export default function StickyHeadTable() {
             if (el.name.toLowerCase().includes(searchValue.toLowerCase()) || !searchValue) rowsSearched.push(el);
         }
         );
-        if (rowsSearched.length === 0) { rowsSearched.push(createData("BRAK DANYCH", "-", "-", "-")) }
+        if (rowsSearched.length === 0) { rowsSearched.push(createData("NO DATA", "-", "-", "-")) }
     }
     checkSearch();
     console.log("SEARCHED", rowsSearched)
