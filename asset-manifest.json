@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/covid-charts-rect-app/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/covid-charts-rect-app/static/js/main.ebf95237.chunk.js",
+    "main.js.map": "/covid-charts-rect-app/static/js/main.ebf95237.chunk.js.map",
+    "runtime-main.js": "/covid-charts-rect-app/static/js/runtime-main.a265f3a9.js",
+    "runtime-main.js.map": "/covid-charts-rect-app/static/js/runtime-main.a265f3a9.js.map",
+    "static/js/2.ae5d4166.chunk.js": "/covid-charts-rect-app/static/js/2.ae5d4166.chunk.js",
+    "static/js/2.ae5d4166.chunk.js.map": "/covid-charts-rect-app/static/js/2.ae5d4166.chunk.js.map",
+    "index.html": "/covid-charts-rect-app/index.html",
+    "precache-manifest.f6f2ce26c1db1dff6a51d49edfc46dc2.js": "/covid-charts-rect-app/precache-manifest.f6f2ce26c1db1dff6a51d49edfc46dc2.js",
+    "service-worker.js": "/covid-charts-rect-app/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/covid-charts-rect-app/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.ae5d4166.chunk.js.LICENSE.txt": "/covid-charts-rect-app/static/js/2.ae5d4166.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a265f3a9.js",
+    "static/js/2.ae5d4166.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.ebf95237.chunk.js"
+  ]
+}
