@@ -1,4 +1,5 @@
 {
+  "homepage": "https://bartek-ciesielski.github.io/covid-charts-rect-app/",
   "name": "covid-charts-rect-app",
   "version": "0.1.0",
   "private": true,
@@ -8,6 +9,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^2.2.0",
     "material-ui-colors": "^1.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -16,6 +18,8 @@
     "recharts": "^1.8.5"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
