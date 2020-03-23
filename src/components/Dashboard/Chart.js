@@ -113,14 +113,6 @@ export default function Chart(props) {
     const handleChange1 = event => {
         dataParsed = []
         setCountry1(event)
-        // props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
-        // props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
-        //*************************************
-
-        // podaje stan porzedni, nie obecny zmieniony
-
-        //*************************************/
-
     };
 
     const handleChange2 = event => {
@@ -143,17 +135,6 @@ export default function Chart(props) {
     };
 
 
-
-    // props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
-    // props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
-
-    //*************************************/
-    // w tym miejcu wywala blad, ale dziala
-    //*************************************/
-
-
-    //   handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
-    //     handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
 useEffect(() => {
     props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
     props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
@@ -163,7 +144,7 @@ useEffect(() => {
 
 
     return (
-        <React.Fragment>
+        <React.Fragment style={{border: '5px solid'}}>
             <Title>COVID-19 Comparison</Title>
             <p variant="subtitle2">{new Date().toLocaleDateString()}</p>
             <ResponsiveContainer>

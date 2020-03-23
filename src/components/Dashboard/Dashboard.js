@@ -116,6 +116,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    overflow: 'auto',
   },
   paper: {
     padding: theme.spacing(2),
@@ -188,7 +189,7 @@ export default function Dashboard() {
   const handleChangeCountryName1 = (el, el2, el3) => {
     setCountry1(el);
     setCount(el2);
-    setChartFactor(el2);
+    setChartFactor(el3);
   };
 
   const handleChangeCountryName2 = (el, el2, el3) => {
