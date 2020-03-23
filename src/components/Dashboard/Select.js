@@ -70,14 +70,15 @@ export default function SimpleSelect(props) {
     const handleChangeYmax = (event, value) => { props.handleChangeYmaxParent(value) }
 
     return (
-        <div style={{
-            display: 'flex',
-            // border: '1px solid',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            minWidth: '70%'
-        }}>
+        <div
+            style={{
+                display: 'flex',
+                // border: '1px solid',
+                flexWrap: 'wrap',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                minWidth: '70%'
+            }}>
             <FormControl variant="outlined" color='secondary' className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">Country 1</InputLabel>
                 <Select
@@ -126,44 +127,49 @@ export default function SimpleSelect(props) {
                     ))}
                 </Select>
             </FormControl>
-            <div style={{display: 'flex', alignItems: 'center'}}>
-            <FormControl variant="outlined" className={classes.formControl} style = {{paddingLeft: 20 }}>
-                <div >
-                    <Typography variant='caption'>
-                        Start Number
+            <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+            }}>
+                <FormControl variant="outlined" className={classes.formControl} style={{ paddingLeft: 20 }}>
+                    <div >
+                        <Typography variant='caption'>
+                            Start Number
                     </Typography>
-                    <Slider
-                        defaultValue={1}
-                        getAriaValueText={valuetext}
-                        aria-labelledby="discrete-slider-always"
-                        step={1}
-                        min={1}
-                        max={1000}
-                        marks={marks}
-                        valueLabelDisplay="auto"
-                        onChange={handleChangeStart}
-                    />
-                </div>
-            </FormControl>
-            <FormControl variant="outlined" className={classes.formControl} style = {{ paddingLeft: 20 }}>
-            <div>
-                <Typography variant='caption'>
-                    Y scale
+                        <Slider
+                            defaultValue={1}
+                            getAriaValueText={valuetext}
+                            aria-labelledby="discrete-slider-always"
+                            step={1}
+                            min={1}
+                            max={1000}
+                            marks={marks}
+                            valueLabelDisplay="auto"
+                            onChange={handleChangeStart}
+                        />
+                    </div>
+                </FormControl>
+                <FormControl variant="outlined" className={classes.formControl} style={{ paddingLeft: 20 }}>
+                    <div>
+                        <Typography variant='caption'>
+                            Y scale
                 </Typography>
-                <Slider
-                    defaultValue={1}
-                    getAriaValueText={valuetext}
-                    aria-labelledby="discrete-slider-always"
-                    step={0.1}
-                    min={1}
-                    max={10}
-                    marks={marksYmax}
-                    valueLabelDisplay="off"
-                    onChange={handleChangeYmax}
-              />
+                        <Slider
+                            defaultValue={1}
+                            getAriaValueText={valuetext}
+                            aria-labelledby="discrete-slider-always"
+                            step={0.1}
+                            min={1}
+                            max={10}
+                            marks={marksYmax}
+                            valueLabelDisplay="off"
+                            onChange={handleChangeYmax}
+                        />
+                    </div>
+                </FormControl>
             </div>
-        </FormControl>
-        </div>
         </div>
 
     );

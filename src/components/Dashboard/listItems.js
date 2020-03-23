@@ -17,7 +17,6 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <Select/>
       <ListItemText primary="Comparison" />
     </ListItem>
     <ListItem button>
