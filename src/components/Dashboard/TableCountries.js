@@ -20,19 +20,19 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 console.log("DATA CSV RAW", dataCSVdaily.data);
 
 const columns = [
-    { id: 'name', label: 'Country', minWidth: 170 },
-    { id: 'sickCount', label: 'Confirmed Cases', minWidth: 100, align: 'right', },
+    { id: 'name', label: 'Country', minWidth: 150 },
+    { id: 'sickCount', label: 'Confirmed Cases', minWidth: 40, align: 'right', },
     {
         id: 'deathCount',
         label: 'Deaths',
-        minWidth: 100,
+        minWidth: 40,
         align: 'right',
         format: value => value.toLocaleString(),
     },
     {
         id: 'recoveredCount',
         label: 'Recovered',
-        minWidth: 100,
+        minWidth: 40,
         align: 'right',
         format: value => value.toLocaleString(),
     },
