@@ -24,6 +24,7 @@ import Totals from './Totals';
 import CountriesTable from './TableCountries'
 
 
+
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import cyan from '@material-ui/core/colors/cyan';
 
@@ -241,6 +242,7 @@ export default function Dashboard() {
             </IconButton>
           </div>
           <Divider />
+
           <List>{mainListItems}</List>
           { /*<Divider />
         <List>{secondaryListItems}</List> */ }
@@ -276,7 +278,7 @@ export default function Dashboard() {
                 </Paper>
               </Grid>
               {/* TableCountry */}
-              <Grid item xs={12} >
+              <Grid item xs={12}>
                 <Paper className={classes.paper}>
                   <CountriesTable />
                 </Paper>

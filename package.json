@@ -12,10 +12,12 @@
     "gh-pages": "^2.2.0",
     "material-ui-colors": "^1.0.0",
     "react": "^16.13.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.13.0",
     "react-papaparse": "^3.0.0",
     "react-resize-detector": "^4.2.1",
     "react-scripts": "3.4.0",
+    "react-scroll": "^1.7.16",
     "recharts": "^1.8.5"
   },
   "scripts": {

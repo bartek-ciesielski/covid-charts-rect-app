@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import dataCSV from './data';
 import dataCSVdaily from './dataTableDaily';
 import ImportExportTwoToneIcon from '@material-ui/icons/ImportExportTwoTone';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 
 
@@ -156,7 +156,7 @@ export default function StickyHeadTable() {
 
     return (
 
-        <Paper className={classes.root}>
+        <Paper className={classes.root} id='compare'>
             <TableContainer className={classes.container}>
                 <form className={classes.root} noValidate autoComplete="off">
                     <TextField className={'search'}

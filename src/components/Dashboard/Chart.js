@@ -141,7 +141,6 @@ useEffect(() => {
     props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
   });
 
-    console.log(country1, "COUNTRY 1", dataParsed)
 
 
     return (
