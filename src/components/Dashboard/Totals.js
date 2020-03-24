@@ -29,7 +29,7 @@ export default function Deposits(props) {
   const classes = useStyles();
   return (
     <React.Fragment >
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+      <div style={{textAlign:'center'}}>
         <Title>{props.factor}</Title>
         <p>TOTAL</p>
 

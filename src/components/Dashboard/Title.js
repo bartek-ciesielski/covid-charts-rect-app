@@ -4,7 +4,10 @@ import Typography from '@material-ui/core/Typography';
 
 export default function Title(props) {
   return (
-    <Typography component="h5" variant="h6" color="black" style={{textAlign: 'center'}}>
+    <Typography component="h5" variant="h6" color="black"
+    style={{textAlign: 'center',
+    width:'100%',
+  paddingBottom: '20px'}}>
       {props.children.toUpperCase()}
     </Typography>
   );

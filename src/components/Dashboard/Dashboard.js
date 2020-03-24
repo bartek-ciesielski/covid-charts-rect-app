@@ -117,15 +117,18 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     overflow: 'auto',
+
   },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     overflow: 'auto',
-    flexDirection: 'column',
+    justifyContent: "center",
   },
   fixedHeight: {
-    height: 740,
+  height: "100%",
   },
 }));
 
@@ -248,12 +251,14 @@ export default function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}>
+            <Grid container spacing={3}container
+            justify="center"
+            alignItems="stretch"
+ >
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   className={fixedHeightPaper}
-                  style={{ alignItems: "center", justifyContent: 'center' }}
                 >
                   <Chart
                     handleDashboardCountryName1={handleChangeCountryName1}
@@ -273,7 +278,7 @@ export default function Dashboard() {
                 </Paper>
               </Grid>
               {/* TableCountry */}
-              <Grid item xs={12}>
+              <Grid item xs={12} >
                 <Paper className={classes.paper}>
                   <CountriesTable />
                 </Paper>

@@ -6,6 +6,7 @@ import dataCSV from '../Dashboard/data'
 import dataCSVdeaths from '../Dashboard/dataDeaths'
 import dataCSVrecovered from '../Dashboard/dataRecovered'
 import Select from './Select'
+import './Chart.css'
 
 
 
@@ -144,13 +145,13 @@ useEffect(() => {
 
 
     return (
-        <React.Fragment style={{border: '5px solid'}}>
+        <React.Fragment>
             <Title>COVID-19 Comparison</Title>
-            <p variant="subtitle2">{new Date().toLocaleDateString()}</p>
+            {/*<p variant="subtitle2">{new Date().toLocaleDateString()}</p> */}
             <ResponsiveContainer>
                 <AreaChart
-                    width={500}
-                    height={400}
+                    width={400}
+                    height={300}
                     data={dataParsed}
                     margin={{
                         top: 0,
@@ -199,16 +200,17 @@ useEffect(() => {
                     <Area type="monotone" dataKey={`${country1chosen}`} stroke={theme.palette.secondary.light} strokeWidth={2} fill={theme.palette.secondary.main} dot={false} />
                     <Area type="monotone" dataKey={`${country2chosen}`} stroke={theme.palette.primary.light} strokeWidth={2} fill={theme.palette.primary.main} dot={false} />
                 </AreaChart>
+
             </ResponsiveContainer>
             <Select
-                factor={chartFactor}
-                country1={country1chosen}
-                country2={country2chosen}
-                handleChangeParent={handleChange1}
-                handleChangeParent2={handleChange2}
-                handleChangeYmaxParent={handleChangeScaleYmax}
-                handleChangeChartFactorParent={handleChangeChartFactor}
-                handleChangeStartNumberParent={handleChangeStartNumber} />
+            factor={chartFactor}
+            country1={country1chosen}
+            country2={country2chosen}
+            handleChangeParent={handleChange1}
+            handleChangeParent2={handleChange2}
+            handleChangeYmaxParent={handleChangeScaleYmax}
+            handleChangeChartFactorParent={handleChangeChartFactor}
+            handleChangeStartNumberParent={handleChangeStartNumber} />
         </React.Fragment>
     );
 }
