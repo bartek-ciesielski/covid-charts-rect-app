@@ -7,6 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
 import dataCSVdaily from './dataTableDaily';
 import './Totals.css'
+import { cyan } from '@material-ui/core/colors';
 
 
 
@@ -48,7 +49,7 @@ export default function Totals(props) {
     country2global = countriesGlobal.filter(el => el.name === 'Poland');
 
   console.log(country1global[0].name, "IF PROPS")
-  console.log(country1global, " COUNTRY 1 GLOBAL ", dataCSVdaily.data, "RAW DATA GLOBAL")
+  console.log(country1global, " COUNTRY 1 GLOBAL ")
 
 
 
@@ -63,23 +64,23 @@ export default function Totals(props) {
         {/*<Title>{props.factor}</Title>
         <p>TOTAL</p>*/}
         <Typography color="secondary" variant="h5" >
-          <p style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', marginTop: 50, flexBasis: '100%' }}>
+          <p style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', marginTop: 50, flexBasis: '100%'}}>
             <PeopleAltTwoToneIcon style={{ fontSize: 60, marginRight: 30 }} />{props.country1}
           </p>
         </Typography>
         {/*<p style={{ fontSize: 30 }}>{props.sickCount}</p>*/}
-        <p style={{ fontSize: '1rem', flexBasis: '100%' }}>Confirmed: {country1global[0].confirmed}</p>
-        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Deaths: {country1global[0].deaths}</p>
-        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Recovered: {country1global[0].recovered}</p>
+        <p style={{ fontSize: '1rem', flexBasis: '100%' }}>Confirmed: <span style={{color: '#ff9800'}}>{country1global[0].confirmed}</span></p>
+        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Deaths: <span style={{color: '#ff9800'}}>{country1global[0].deaths}</span></p>
+        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Recovered: <span style={{color: '#ff9800'}}>{country1global[0].recovered}</span></p>
         <Typography color="primary" variant="h7">
           <p style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', marginTop: 90 }}>
             <PeopleAltTwoToneIcon style={{ fontSize: 60, marginRight: 30 }} />{props.country2}
           </p>
         </Typography>
         {/*<p style={{ fontSize: 30 }}>{props.sickCount2} </p>*/}
-        <p style={{ fontSize: '1rem', flexBasis: '100%'  }}>Confirmed: {country2global[0].confirmed}</p>
-        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Deaths: {country2global[0].deaths}</p>
-        <p style={{ fontSize: '1rem',  flexBasis: '100%', marginBottom: 50 }}>Recovered: {country2global[0].recovered}</p>
+        <p style={{ fontSize: '1rem', flexBasis: '100%'  }}>Confirmed: <span style={{color: '#80deea'}}>{country2global[0].confirmed}</span></p>
+        <p style={{ fontSize: '1rem',  flexBasis: '100%' }}>Deaths: <span style={{color: '#80deea'}}>{country2global[0].deaths}</span></p>
+        <p style={{ fontSize: '1rem',  flexBasis: '100%', marginBottom: 50 }}>Recovered: <span style={{color: '#80deea'}}> {country2global[0].recovered}</span></p>
         <div>
           <Link color="primary" href="#" onClick={preventDefault}>
           </Link>
