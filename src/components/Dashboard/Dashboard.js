@@ -32,12 +32,10 @@ import cyan from '@material-ui/core/colors/cyan';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
+      <p> Data - CSSE at Johns Hopkins University</p>
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Bartek Ciesielski
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+      <p> bartlomiej-ciesielski@wp.pl
+        {'.'}</p>
     </Typography>
   );
 }
@@ -128,7 +126,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
   },
   fixedHeight: {
-  height: "100%",
+    height: "100%",
   },
 }));
 
@@ -251,10 +249,10 @@ export default function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}container
-            justify="center"
-            alignItems="stretch"
- >
+            <Grid container spacing={3} container
+              justify="center"
+              alignItems="stretch"
+            >
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper

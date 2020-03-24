@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '25ch',
-            maxWidth: '60vw',
+            maxWidth: '58vw',
         },
     },
     container: {
