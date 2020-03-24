@@ -83,11 +83,12 @@ const useStyles = makeStyles(theme => ({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
             width: '25ch',
+            maxWidth: '60vw',
         },
     },
     container: {
         // backgroundColor: theme.palette.grey[200],
-        maxHeight: 440,
+        // maxHeight: 440,
     },
 }));
 
@@ -158,12 +159,13 @@ export default function StickyHeadTable() {
         <Paper className={classes.root}>
             <TableContainer className={classes.container}>
                 <form className={classes.root} noValidate autoComplete="off">
-                    <TextField
+                    <TextField className={'search'}
                         id="outlined-search"
                         label="Find Country"
                         type="search"
                         variant="outlined"
-                        onChange={handleChangeSearch} />
+                        onChange={handleChangeSearch}
+                    />
                 </form>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead >
@@ -175,10 +177,10 @@ export default function StickyHeadTable() {
                                     style={{ minWidth: column.minWidth }}
                                     onClick={handleSort(column.id)}
                                 >
-                                        <div style={column.id === 'name' ?
-                                        {display: 'flex', justifyContent: 'flex-start', alignItems: 'center'} :
-                                        {display: 'flex', justifyContent: 'flex-end', alignItems: 'center'} }>
-                                        {column.label}<ImportExportTwoToneIcon style={{marginLeft: '10px', fontSize: 'medium'}}/>
+                                    <div style={column.id === 'name' ?
+                                        { display: 'flex', justifyContent: 'flex-start', alignItems: 'center' } :
+                                        { display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                                        {column.label}<ImportExportTwoToneIcon style={{ marginLeft: '10px', fontSize: 'medium' }} />
                                     </div>
                                 </TableCell>
                             ))}
