@@ -6,6 +6,6 @@
 
 
   #root > div > main > div.MuiContainer-root.makeStyles-container-13.MuiContainer-maxWidthLg > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-3.MuiGrid-justify-xs-center > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-md-8.MuiGrid-grid-lg-9 > div > div.recharts-responsive-container > div.recharts-wrapper > svg > g.recharts-layer.recharts-cartesian-axis.recharts-yAxis.yAxis > g > g:nth-child(1) {
-    display: none;
-  }
+    display: none !important;
+  } 
 
