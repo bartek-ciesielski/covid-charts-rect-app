@@ -18,13 +18,13 @@ export const mainListItems = (
    <ListItem button>
 
       <ListItemIcon>
-        <DashboardIcon />
+      <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Comparison" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <BarChartIcon />
+      <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="In progress..." />
     </ListItem>
