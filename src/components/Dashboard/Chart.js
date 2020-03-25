@@ -169,7 +169,7 @@ useEffect(() => {
                     <XAxis type="number"
                         dataKey="day"
                         stroke={theme.palette.text.primary}
-                        tickCount={10} domain={[0, (maxXvalue - 1)]}
+                        tickCount={6} domain={[0, (maxXvalue - 1)]}
                         allowDecimals={false}
                     >
                         <Label
@@ -184,7 +184,7 @@ useEffect(() => {
                     </XAxis>
                     <YAxis type="number"
                         stroke={theme.palette.text.secondary}
-                        domain={[0, dataMax => ((maxYvalue / scaleYmax).toFixed())]} 
+                        domain={[0, dataMax => ((maxYvalue / scaleYmax).toFixed())]}
                         tickCount={10}
                        mirror={true}
                        scale='auto'
