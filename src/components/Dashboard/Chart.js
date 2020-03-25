@@ -7,6 +7,7 @@ import dataCSVdeaths from '../Dashboard/dataDeaths'
 import dataCSVrecovered from '../Dashboard/dataRecovered'
 import Select from './Select'
 import './Chart.css'
+import { Typography } from '@material-ui/core';
 
 
 
@@ -43,7 +44,8 @@ export default function Chart(props) {
     }
     else { country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`); }
 
-
+    const chartDateArr = Object.keys(country1[0])
+    const chartDate = new Date(chartDateArr[chartDateArr.length - 1]).toLocaleDateString().replace(/\//g, '-')
     const sickNumberArray1 = Object.values(country1[0]).splice(4)
     const sickNumberArray2 = Object.values(country2[0]).splice(4);
     const actualSickAmount1 = sickNumberArray1[sickNumberArray1.length - 1];
@@ -136,17 +138,19 @@ export default function Chart(props) {
     };
 
 
-useEffect(() => {
-    props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
-    props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
-  });
+    useEffect(() => {
+        props.handleDashboardCountryName1(country1chosen, actualSickAmount1, chartFactor)
+        props.handleDashboardCountryName2(country2chosen, actualSickAmount2, chartFactor)
+    });
 
 
 
     return (
         <React.Fragment>
             <Title>COVID-19 Comparison</Title>
-            {/*<p variant="subtitle2">{new Date().toLocaleDateString()}</p> */}
+            <Typography variant="caption">
+            <p style={{marginTop: '5px'}}>{chartDate}</p>
+            </Typography>
             <ResponsiveContainer>
                 <AreaChart
                     width={400}
@@ -177,7 +181,8 @@ useEffect(() => {
                             offset={45}
                             style={{
                                 fill: theme.palette.text.primary,
-                                textAnchor: 'middle' }}
+                                textAnchor: 'middle'
+                            }}
                         >
                             DAYS
                         </Label>
@@ -186,8 +191,8 @@ useEffect(() => {
                         stroke={theme.palette.text.secondary}
                         domain={[0, dataMax => ((maxYvalue / scaleYmax).toFixed())]}
                         tickCount={10}
-                       mirror={true}
-                       scale='auto'
+                        mirror={true}
+                        scale='auto'
                     >
                         <Label
                             angle={270}
@@ -205,14 +210,14 @@ useEffect(() => {
 
             </ResponsiveContainer>
             <Select
-            factor={chartFactor}
-            country1={country1chosen}
-            country2={country2chosen}
-            handleChangeParent={handleChange1}
-            handleChangeParent2={handleChange2}
-            handleChangeYmaxParent={handleChangeScaleYmax}
-            handleChangeChartFactorParent={handleChangeChartFactor}
-            handleChangeStartNumberParent={handleChangeStartNumber} />
+                factor={chartFactor}
+                country1={country1chosen}
+                country2={country2chosen}
+                handleChangeParent={handleChange1}
+                handleChangeParent2={handleChange2}
+                handleChangeYmaxParent={handleChangeScaleYmax}
+                handleChangeChartFactorParent={handleChangeChartFactor}
+                handleChangeStartNumberParent={handleChangeStartNumber} />
         </React.Fragment>
     );
 }
