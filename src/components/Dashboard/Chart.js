@@ -184,7 +184,7 @@ useEffect(() => {
                     </XAxis>
                     <YAxis type="number"
                         stroke={theme.palette.text.secondary}
-                        domain={[minYvalue, dataMax => ((maxYvalue / scaleYmax).toFixed())]}
+                        domain={[0, dataMax => ((maxYvalue / scaleYmax).toFixed())]} 
                         tickCount={10}
                        mirror={true}
                        scale='auto'
