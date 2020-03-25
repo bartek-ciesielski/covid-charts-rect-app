@@ -119,7 +119,9 @@ const useStyles = makeStyles(theme => ({
 
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
+    paddingTop: '16px',
+    paddingBottom: '16px',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',

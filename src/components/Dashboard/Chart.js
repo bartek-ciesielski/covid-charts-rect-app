@@ -184,12 +184,15 @@ useEffect(() => {
                     </XAxis>
                     <YAxis type="number"
                         stroke={theme.palette.text.secondary}
-                        tickCount={10}
                         domain={[minYvalue, dataMax => ((maxYvalue / scaleYmax).toFixed())]}
+                        tickCount={10}
+                       mirror={true}
+                       scale='auto'
                     >
                         <Label
                             angle={270}
                             position="left"
+                            offset={15}
                             style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
                         >
                             {`Cumulative - ${chartFactor}`}
