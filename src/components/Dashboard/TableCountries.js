@@ -46,7 +46,7 @@ function createData(name, sickCount, deathCount, recoveredCount) {
 
 const rowsUnsorted = dataCSVdaily.data.map(el => {
     return createData(
-        el['Province/State'] === '' ? el['Country/Region'] : `${el['Country/Region']} - ${el['Province/State']}`,
+        el['Province_State'] === '' ? el['Country_Region'] : `${el['Country_Region']} - ${el['Province_State']}`,
         el.Confirmed,
         el.Deaths,
         el.Recovered)
