@@ -35,14 +35,14 @@ export default function Chart(props) {
     if (country1chosen.split(' - ').length > 1) {
         country1 = countries.filter(el => el['Province/State'] === country1chosen.split(' - ')[1] && el['Country/Region'] === country1chosen.split(' - ')[0]);
     }
-    else { country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}`); }
+    else { country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}` && el['Province/State'] === ''); }
 
 
     let country2 = []
     if (country2chosen.split(' - ').length > 1) {
         country2 = countries.filter(el => el['Province/State'] === country2chosen.split(' - ')[1] && el['Country/Region'] === country2chosen.split(' - ')[0]);
     }
-    else { country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}`); }
+    else { country2 = countries.filter(el => el['Country/Region'] === `${country2chosen}` && el['Province/State'] === ''); }
 
     const chartDateArr = Object.keys(country1[0])
     const chartDate = new Date(chartDateArr[chartDateArr.length - 1]).toLocaleDateString().replace(/\//g, '-')

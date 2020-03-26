@@ -48,8 +48,8 @@ export default function Totals(props) {
   props.country1 !== "" ? country2global = countriesGlobal.filter(el => el.name === props.country2) :
     country2global = countriesGlobal.filter(el => el.name === 'Poland');
 
-  console.log(country1global[0].name, "IF PROPS")
-  console.log(country1global, " COUNTRY 1 GLOBAL ")
+  // console.log(country1global[0].name, "IF PROPS")
+  console.log(country1global[0], " COUNTRY 1 GLOBAL ")
 
 
 
