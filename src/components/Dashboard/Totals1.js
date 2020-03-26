@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Title from './Title';
 import Icon from '@material-ui/core/Icon';
 import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
-import dataCSVdaily from './dataTableDaily';
+import dataCSVdaily from '../../Data/dataTableDaily';
 import './Totals.css'
 import { cyan } from '@material-ui/core/colors';
 

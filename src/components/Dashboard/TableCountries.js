@@ -9,15 +9,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import dataCSV from './data';
-import dataCSVdaily from './dataTableDaily';
+import dataCSVdaily from '../../Data/dataTableDaily';
 import ImportExportTwoToneIcon from '@material-ui/icons/ImportExportTwoTone';
 // import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-
-
-
-
-console.log("DATA CSV RAW", dataCSVdaily.data);
 
 const columns = [
     { id: 'name', label: 'Country', minWidth: 150 },
@@ -131,14 +125,6 @@ export default function StickyHeadTable() {
         }
     }
 
-    // const handleSort = property => (event) => {
-
-    //         console.log(property)
-    //         setSortName(!sortName)
-    //         sortName === true ? rowsSortedbyNameAsc() : rowsSortedbyNameDesc()
-
-    // }
-
     const handleChangeSearch = (event) => setSearchValue(event.target.value)
 
     const rowsSearched = [];
@@ -150,8 +136,6 @@ export default function StickyHeadTable() {
         if (rowsSearched.length === 0) { rowsSearched.push(createData("NO DATA", "-", "-", "-")) }
     }
     checkSearch();
-    console.log("SEARCHED", rowsSearched)
-
 
 
     return (

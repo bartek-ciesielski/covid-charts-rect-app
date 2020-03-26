@@ -2,11 +2,11 @@ import React, { onError, onComplete, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Legend, Tooltip } from 'recharts';
 import Title from './Title';
-import dataCSV from '../Dashboard/data'
-import dataCSVdeaths from '../Dashboard/dataDeaths'
-import dataCSVrecovered from '../Dashboard/dataRecovered'
+import dataCSV from '../../Data/data'
+import dataCSVdeaths from '../../Data/dataDeaths'
+import dataCSVrecovered from '../../Data/dataRecovered'
 import Select from './Select'
-import './Chart.css'
+import './CSS/Chart.css'
 import { Typography } from '@material-ui/core';
 
 
