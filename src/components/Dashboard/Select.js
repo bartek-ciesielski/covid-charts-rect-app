@@ -1,16 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useTheme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import dataCSV from '../../Data/data'
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-
-
 
 const countries = dataCSV.data;
 const countryName = countries.map(el => {
@@ -73,7 +69,6 @@ export default function SimpleSelect(props) {
         <div
             style={{
                 display: 'flex',
-                // border: '1px solid',
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
                 alignItems: 'center',
@@ -112,7 +107,7 @@ export default function SimpleSelect(props) {
                 </Select>
             </FormControl>
             <FormControl variant="outlined" color='secondary' className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Category       </InputLabel>
+                <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
@@ -171,6 +166,5 @@ export default function SimpleSelect(props) {
                 </FormControl>
             </div>
         </div>
-
     );
 }

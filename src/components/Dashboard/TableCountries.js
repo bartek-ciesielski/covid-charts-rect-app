@@ -11,7 +11,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import dataCSVdaily from '../../Data/dataTableDaily';
 import ImportExportTwoToneIcon from '@material-ui/icons/ImportExportTwoTone';
-// import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
 
 const columns = [
     { id: 'name', label: 'Country', minWidth: 150 },
@@ -37,8 +37,7 @@ function createData(name, sickCount, deathCount, recoveredCount) {
     return { name, sickCount, deathCount, recoveredCount };
 }
 
-
-const rowsUnsorted = dataCSVdaily.data.map(el => {
+const rowsUnsorted = dataCSVdaily.data.map((el) => {
     return createData(
         el['Province_State'] === '' ? el['Country_Region'] : `${el['Country_Region']} - ${el['Province_State']}`,
         el.Confirmed,
@@ -67,9 +66,6 @@ const rowsSortedbyRecoveredDesc = () => rows = rowsUnsorted.sort(function (a, b)
 const rowsSortedbyRecoveredAsc = () => rows = rowsUnsorted.sort(function (a, b) { return b.recoveredCount - a.recoveredCount }).reverse();
 
 rowsSortedbyNameAsc()
-
-
-console.log("ROOOWS", rows)
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -126,7 +122,6 @@ export default function StickyHeadTable() {
     }
 
     const handleChangeSearch = (event) => setSearchValue(event.target.value)
-
     const rowsSearched = [];
     const checkSearch = () => {
         rows.forEach(el => {
@@ -135,11 +130,10 @@ export default function StickyHeadTable() {
         );
         if (rowsSearched.length === 0) { rowsSearched.push(createData("NO DATA", "-", "-", "-")) }
     }
+
     checkSearch();
 
-
     return (
-
         <Paper className={classes.root} id='compare'>
             <TableContainer className={classes.container}>
                 <form className={classes.root} noValidate autoComplete="off">
@@ -154,9 +148,9 @@ export default function StickyHeadTable() {
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead >
                         <TableRow>
-                            {columns.map(column => (
+                            {columns.map((column, i) => (
                                 <TableCell
-                                    key={column.id}
+                                    key={i}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
                                     onClick={handleSort(column.id)}
@@ -171,13 +165,13 @@ export default function StickyHeadTable() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rowsSearched.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
+                        {rowsSearched.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i)=> {
                             return (
-                                <TableRow hover={true} role="checkbox" tabIndex={-1} key={row.code}>
-                                    {columns.map(column => {
+                                <TableRow  key={i} hover={true} role="checkbox" tabIndex={-1} >
+                                    {columns.map((column, i) => {
                                         const value = row[column.id];
                                         return (
-                                            <TableCell key={column.id} align={column.align}>
+                                            <TableCell key={i} align={column.align}>
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
                                         );

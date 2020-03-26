@@ -1,6 +1,6 @@
-import React, { onError, onComplete, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
-import { AreaChart, Area, LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Legend, Tooltip } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts';
 import Title from './Title';
 import dataCSV from '../../Data/data'
 import dataCSVdeaths from '../../Data/dataDeaths'
@@ -9,13 +9,9 @@ import Select from './Select'
 import './CSS/Chart.css'
 import { Typography } from '@material-ui/core';
 
-
-
-
 export default function Chart(props) {
 
     const theme = useTheme();
-
     const [country1chosen, setCountry1] = React.useState('Italy');
     const [country2chosen, setCountry2] = React.useState('Poland');
     const [startNumber, setStartNumber] = React.useState(1);
@@ -28,15 +24,11 @@ export default function Chart(props) {
     if (chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
     if (chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
 
-
-
-
     let country1 = []
     if (country1chosen.split(' - ').length > 1) {
         country1 = countries.filter(el => el['Province/State'] === country1chosen.split(' - ')[1] && el['Country/Region'] === country1chosen.split(' - ')[0]);
     }
     else { country1 = countries.filter(el => el['Country/Region'] === `${country1chosen}` && el['Province/State'] === ''); }
-
 
     let country2 = []
     if (country2chosen.split(' - ').length > 1) {
@@ -52,13 +44,11 @@ export default function Chart(props) {
     const actualSickAmount2 = sickNumberArray2[sickNumberArray1.length - 1];
 
     let dataParsed = [];
-
-    // let chartStartSickNumber = 1;
     let chartStartSickNumber = startNumber;
     let chartStartDayCounter = 0;
     let Counter2 = 0;
     const maxTime = Object.values(country1[0]).length;
-    const minYvalue = chartStartSickNumber;
+    // const minYvalue = chartStartSickNumber;
     const maxYvalue = Math.max(...sickNumberArray1, ...sickNumberArray2);
 
     const setDataArray = () => {
@@ -98,7 +88,6 @@ export default function Chart(props) {
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload) {
-            console.log(payload, "PAYLOAD", label, "label")
             return (
                 <div className="custom-tooltip">
                     <p className="label">{`DAY ${label}`}</p>

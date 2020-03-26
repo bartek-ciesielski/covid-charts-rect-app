@@ -1,21 +1,4 @@
-import { readRemoteFile, readString, Papa } from 'react-papaparse'
-
-import * as Papa1 from 'papaparse';
-let dataCsvFetch = [];
-const url = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv'
-Papa1.parse(
-    url,
-    {
-        header: true,
-        download: true,
-        complete: function (results) {
-            console.log('Results:', results.data, 'fields:', results.meta.fields)
-            dataCsvFetch[0] = results.data;
-            dataCsvFetch[1] = results.meta.fields;
-        }
-    });
-
-    console.log(dataCsvFetch, "FETHC", dataCsvFetch[0], "Length")
+import { readString } from 'react-papaparse'
 
 const csvData = `Province/State,Country/Region,Lat,Long,1/22/20,1/23/20,1/24/20,1/25/20,1/26/20,1/27/20,1/28/20,1/29/20,1/30/20,1/31/20,2/1/20,2/2/20,2/3/20,2/4/20,2/5/20,2/6/20,2/7/20,2/8/20,2/9/20,2/10/20,2/11/20,2/12/20,2/13/20,2/14/20,2/15/20,2/16/20,2/17/20,2/18/20,2/19/20,2/20/20,2/21/20,2/22/20,2/23/20,2/24/20,2/25/20,2/26/20,2/27/20,2/28/20,2/29/20,3/1/20,3/2/20,3/3/20,3/4/20,3/5/20,3/6/20,3/7/20,3/8/20,3/9/20,3/10/20,3/11/20,3/12/20,3/13/20,3/14/20,3/15/20,3/16/20,3/17/20,3/18/20,3/19/20,3/20/20,3/21/20,3/22/20,3/23/20,3/24/20,3/25/20
 ,Afghanistan,33.0,65.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,5,7,7,7,11,16,21,22,22,22,24,24,40,40,74,84
