@@ -11,13 +11,6 @@ object-assign
   License: MIT
   */
 
-/* @license
-Papa Parse
-v5.1.1
-https://github.com/mholt/PapaParse
-License: MIT
-*/
-
 /*!
   Copyright (c) 2017 Jed Watson.
   Licensed under the MIT License (MIT), see
