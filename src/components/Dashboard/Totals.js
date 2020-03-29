@@ -1,16 +1,41 @@
-import React from 'react';
+import React,  { useEffect } from 'react';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
 import PeopleAltTwoToneIcon from '@material-ui/icons/PeopleAltTwoTone';
 // import dataCSVdaily from '../../Data/dataTableDaily';
-import './CSS/Totals.css'
+import './CSS/Totals.css';
+import Posts from '../../Data/dataDetch';
+
+
+
 
 function preventDefault(event) {
   event.preventDefault();
 }
 
 export default function Deposits(props) {
+
+
+
+
+    // const [postsList, setPostArr] = React.useState([]);
+
+    // useEffect(() => {
+    //     fetch('https://jsonplaceholder.typicode.com/posts/')
+    //         .then(response => response.json())
+    //         .then(data => setPostArr([...data]
+    //         ))
+    //         .catch((error) => {
+    //             alert('Error:', error);
+    //         });
+    // }, []);
+
+    // console.log(postsList, "POSTLOST")
+
+
+
+
     return (
       <React.Fragment >
         <div style={{textAlign:'center'}}>
