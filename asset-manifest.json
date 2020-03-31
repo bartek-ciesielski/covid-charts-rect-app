@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/covid-charts-rect-app/static/css/main.7f3c7081.chunk.css",
-    "main.js": "/covid-charts-rect-app/static/js/main.718afc38.chunk.js",
-    "main.js.map": "/covid-charts-rect-app/static/js/main.718afc38.chunk.js.map",
+    "main.js": "/covid-charts-rect-app/static/js/main.9c36faf0.chunk.js",
+    "main.js.map": "/covid-charts-rect-app/static/js/main.9c36faf0.chunk.js.map",
     "runtime-main.js": "/covid-charts-rect-app/static/js/runtime-main.a265f3a9.js",
     "runtime-main.js.map": "/covid-charts-rect-app/static/js/runtime-main.a265f3a9.js.map",
     "static/js/2.67cb8425.chunk.js": "/covid-charts-rect-app/static/js/2.67cb8425.chunk.js",
     "static/js/2.67cb8425.chunk.js.map": "/covid-charts-rect-app/static/js/2.67cb8425.chunk.js.map",
     "index.html": "/covid-charts-rect-app/index.html",
-    "precache-manifest.4b5f44506f9d3a8e17f7516d214199be.js": "/covid-charts-rect-app/precache-manifest.4b5f44506f9d3a8e17f7516d214199be.js",
+    "precache-manifest.3734b1812051c36fd31c5e483bb8c087.js": "/covid-charts-rect-app/precache-manifest.3734b1812051c36fd31c5e483bb8c087.js",
     "service-worker.js": "/covid-charts-rect-app/service-worker.js",
     "static/css/main.7f3c7081.chunk.css.map": "/covid-charts-rect-app/static/css/main.7f3c7081.chunk.css.map",
     "static/js/2.67cb8425.chunk.js.LICENSE.txt": "/covid-charts-rect-app/static/js/2.67cb8425.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a265f3a9.js",
     "static/js/2.67cb8425.chunk.js",
     "static/css/main.7f3c7081.chunk.css",
-    "static/js/main.718afc38.chunk.js"
+    "static/js/main.9c36faf0.chunk.js"
   ]
 }
