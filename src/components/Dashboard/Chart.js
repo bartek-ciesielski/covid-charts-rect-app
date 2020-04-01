@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AreaChart, Area, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts';
 import Title from './Title';
-import dataCSV from '../../Data/data'
+import dataCSVlocal from '../../Data/data'
 import dataCSVdeaths from '../../Data/dataDeaths'
 import dataCSVrecovered from '../../Data/dataRecovered'
 import Select from './Select'
 import './CSS/Chart.css'
 import { Typography } from '@material-ui/core';
+
+import { readString } from 'react-papaparse'
 
 export default function Chart(props) {
 
@@ -17,10 +19,43 @@ export default function Chart(props) {
     const [startNumber, setStartNumber] = React.useState(1);
     const [chartFactor, setChartFactor] = React.useState('Confirmed');
     const [scaleYmax, setScaleYmax] = React.useState(1);
+    const [dataConfirmed, setDataConfirmed] = React.useState(dataCSVlocal)
 
-    let countries = dataCSV.data
+    const API_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 
-    if (chartFactor === 'Confirmed') { countries = dataCSV.data };
+    const getMessages = () => {
+        return fetch(API_URL)
+          .then((response) => response.text())
+          .then((dataString) => {
+            const dataCSVfetch= readString(`${dataString}`,
+            {
+                header: true,
+            }
+        )
+            setDataConfirmed(dataCSVfetch)
+          })
+      }
+
+      useEffect(() => {
+        getMessages()
+      }, [])
+
+    // const dataCSVfetch= readString(`${messages}`,
+    //     {
+    //         header: true,
+    //     }
+    // )
+
+// console.log("FETCH", dataCSVfetch)
+
+    let countries = []
+    let dataCSVchartConfirmed = dataConfirmed
+
+    // dataCSVfetch.data.length > 0 ? dataCSVchart = dataCSVfetch : dataCSVchart = dataCSVlocal;
+
+    console.log(dataCSVchartConfirmed, "DATA CSV CHART")
+
+    if (chartFactor === 'Confirmed') { countries = dataCSVchartConfirmed.data };
     if (chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
     if (chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
 
