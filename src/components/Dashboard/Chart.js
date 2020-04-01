@@ -72,7 +72,6 @@ export default function Chart(props) {
       }
 
 
-
       useEffect(() => {
         getDataConfirmed()
         getDataDeaths()
@@ -80,12 +79,14 @@ export default function Chart(props) {
       }, [])
 
 
-
-
     let countries = []
-    let dataCSVchartConfirmed = dataConfirmed
+    let dataCSVchartConfirmed = {}
     let dataCSVchartDeaths = dataDeaths
     let dataCSVchartRecovered = dataRecovered
+
+    dataConfirmed.data.length > 0 ? dataCSVchartConfirmed = dataConfirmed : dataCSVchartConfirmed = dataCSVconfirmedLocal;
+    dataDeaths.data.length > 0 ? dataCSVchartDeaths = dataDeaths : dataCSVchartDeaths = dataCSVdeathsLocal;
+    dataRecovered.data.length > 0 ? dataCSVchartRecovered = dataRecovered : dataCSVchartRecovered = dataCSVrecoveredLocal;
 
 
     if (chartFactor === 'Confirmed') { countries = dataCSVchartConfirmed.data };
