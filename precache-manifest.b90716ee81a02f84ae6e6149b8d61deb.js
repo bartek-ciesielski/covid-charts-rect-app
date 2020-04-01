@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ae89f44f0e5a67b776570dbdffde829c",
+    "revision": "23c34cb70538d8a485eaad7fd1f9e5e4",
     "url": "/covid-charts-rect-app/index.html"
   },
   {
-    "revision": "748e04cd3f42653e95cf",
+    "revision": "b857ea06988faf007790",
     "url": "/covid-charts-rect-app/static/css/main.7f3c7081.chunk.css"
   },
   {
-    "revision": "df3a8cecc63b81556585",
-    "url": "/covid-charts-rect-app/static/js/2.154ec09d.chunk.js"
+    "revision": "56aae0e77c80d50a25af",
+    "url": "/covid-charts-rect-app/static/js/2.17952ac8.chunk.js"
   },
   {
     "revision": "7223c77797a403482f3763633361d8b3",
-    "url": "/covid-charts-rect-app/static/js/2.154ec09d.chunk.js.LICENSE.txt"
+    "url": "/covid-charts-rect-app/static/js/2.17952ac8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "748e04cd3f42653e95cf",
-    "url": "/covid-charts-rect-app/static/js/main.8bd55ed5.chunk.js"
+    "revision": "b857ea06988faf007790",
+    "url": "/covid-charts-rect-app/static/js/main.28fba035.chunk.js"
   },
   {
     "revision": "b5ba971efc7e20844cbe",
