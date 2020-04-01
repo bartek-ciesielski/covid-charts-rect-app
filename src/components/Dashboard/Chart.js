@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { AreaChart, Area, XAxis, YAxis, Label, ResponsiveContainer, CartesianGrid, Tooltip } from 'recharts';
 import Title from './Title';
-import dataCSVlocal from '../../Data/data'
-import dataCSVdeaths from '../../Data/dataDeaths'
-import dataCSVrecovered from '../../Data/dataRecovered'
+import dataCSVconfirmedLocal from '../../Data/data'
+import dataCSVdeathsLocal from '../../Data/dataDeaths'
+import dataCSVrecoveredLocal from '../../Data/dataRecovered'
 import Select from './Select'
 import './CSS/Chart.css'
 import { Typography } from '@material-ui/core';
@@ -19,12 +19,16 @@ export default function Chart(props) {
     const [startNumber, setStartNumber] = React.useState(1);
     const [chartFactor, setChartFactor] = React.useState('Confirmed');
     const [scaleYmax, setScaleYmax] = React.useState(1);
-    const [dataConfirmed, setDataConfirmed] = React.useState(dataCSVlocal)
+    const [dataConfirmed, setDataConfirmed] = React.useState(dataCSVconfirmedLocal)
+    const [dataDeaths, setDataDeaths] = React.useState(dataCSVdeathsLocal)
+    const [dataRecovered, setDataRecovered] = React.useState(dataCSVrecoveredLocal)
 
-    const API_URL = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
+    const API_URL_CONFIRMED = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
+    const API_URL_DEATHS = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
+    const API_URL_RECOVERED = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv'
 
-    const getMessages = () => {
-        return fetch(API_URL)
+    const getDataConfirmed = () => {
+        return fetch(API_URL_CONFIRMED)
           .then((response) => response.text())
           .then((dataString) => {
             const dataCSVfetch= readString(`${dataString}`,
@@ -37,27 +41,56 @@ export default function Chart(props) {
       }
 
       useEffect(() => {
-        getMessages()
+        getDataConfirmed()
       }, [])
 
-    // const dataCSVfetch= readString(`${messages}`,
-    //     {
-    //         header: true,
-    //     }
-    // )
 
-// console.log("FETCH", dataCSVfetch)
+      const getDataDeaths = () => {
+        return fetch(API_URL_DEATHS)
+          .then((response) => response.text())
+          .then((dataString) => {
+            const dataCSVfetch= readString(`${dataString}`,
+            {
+                header: true,
+            }
+        )
+            setDataDeaths(dataCSVfetch)
+          })
+      }
+
+      const getDataRecovered = () => {
+        return fetch(API_URL_RECOVERED)
+          .then((response) => response.text())
+          .then((dataString) => {
+            const dataCSVfetch= readString(`${dataString}`,
+            {
+                header: true,
+            }
+        )
+            setDataRecovered(dataCSVfetch)
+          })
+      }
+
+
+
+      useEffect(() => {
+        getDataConfirmed()
+        getDataDeaths()
+        getDataRecovered()
+      }, [])
+
+
+
 
     let countries = []
     let dataCSVchartConfirmed = dataConfirmed
+    let dataCSVchartDeaths = dataDeaths
+    let dataCSVchartRecovered = dataRecovered
 
-    // dataCSVfetch.data.length > 0 ? dataCSVchart = dataCSVfetch : dataCSVchart = dataCSVlocal;
-
-    console.log(dataCSVchartConfirmed, "DATA CSV CHART")
 
     if (chartFactor === 'Confirmed') { countries = dataCSVchartConfirmed.data };
-    if (chartFactor === 'Deaths') { countries = dataCSVdeaths.data };
-    if (chartFactor === 'Recovered') { countries = dataCSVrecovered.data };
+    if (chartFactor === 'Deaths') { countries = dataCSVchartDeaths.data };
+    if (chartFactor === 'Recovered') { countries = dataCSVchartRecovered.data };
 
     let country1 = []
     if (country1chosen.split(' - ').length > 1) {
