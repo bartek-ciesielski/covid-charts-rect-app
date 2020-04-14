@@ -20,7 +20,7 @@ Data repository for the 2019 Novel Coronavirus Visual Dashboard operated by the 
 
 ## Creator
 
-- Bartek Ciesielski [Github](https://github.com/bartek-ciesielski) [Linkedin](https://www.linkedin.com/in/bartek-ciesielski/)
+Bartek Ciesielski [Github](https://github.com/bartek-ciesielski) [Linkedin](https://www.linkedin.com/in/bartek-ciesielski/)
 
 ## Start
 
