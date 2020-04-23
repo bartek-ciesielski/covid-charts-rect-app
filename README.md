@@ -2,6 +2,8 @@
 
 Covid-Charts is a web application, build with React and Material UI, that can be used to compare Covid spread in two countries on one chart. You can check how it looks like [here](https://bartek-ciesielski.github.io/covid-charts-rect-app/).
 
+<img src="url/public/covid_app_screenshot.png">
+
 ## Features
 
 Current features include:
