@@ -6,14 +6,15 @@ Covid-Charts is a RWD web application, build with React and Material UI, which u
 
 ## Features
 
+Application uses Coronavirus Data API from Johns Hopkins CSSE. The API returns cases by country and are updated daily.
+
 Current features include:
 
-- application uses Coronavirus Data API from Johns Hopkins CSSE. The API returns cases by country and are updated daily.
 - option to choose countries to compare
-- scalable chart
+- scalable charts
 - option to choose start number of chart
 - compare in three categories (confirmed cases, deaths, recoverd)
-- table of all countries with sort options by name, confirmed cases, deaths, recoverd
+- table of all countries with sort options by "name", "confirmed cases", "deaths", "recoverd"
 - it can be used on desktops and mobiles (RWD)
 
 
