@@ -1,6 +1,6 @@
-# Covid-Charts
+# COVID CHARTS
 
-[Covid-Charts](https://bartek-ciesielski.github.io/covid-charts-rect-app/) is a RWD web application, build with React and Material UI, which uses The Coronavirus Data API (information sourced from Johns Hopkins CSSE. The API returns cases by country and are updated daily) and can be used to compare Covid spread in two countries on one chart. You can check how it looks like [here](https://bartek-ciesielski.github.io/covid-charts-rect-app/).
+[Covid Charts](https://bartek-ciesielski.github.io/covid-charts-rect-app/) is a RWD web application, build with React and Material UI, which uses The Coronavirus Data API (information sourced from Johns Hopkins CSSE. The API returns cases by country and are updated daily) and can be used to compare Covid spread in two countries on one chart. You can check how it looks like [here](https://bartek-ciesielski.github.io/covid-charts-rect-app/).
 
 <img src="/public/covid_app_screenshot.png">
 
